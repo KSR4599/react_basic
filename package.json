@@ -6,8 +6,7 @@
     "create-react-class": "^15.6.3",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
-    "react-scripts": "1.1.5",
-      "homepage": "https://github.com/KSR4599/react_basic.git"
+    "react-scripts": "1.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
