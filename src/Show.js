@@ -1,5 +1,4 @@
 var React = require('react');
-var createClass = require('create-react-class');
 
 
 class Title extends React.Component {
@@ -29,18 +28,17 @@ class ShowInfo extends React.Component {
   }
 }
 
-var Show = createClass({
-  getDefaultProps: function() {
-    return {
-      showIndex: 0
-    };
-  },
-  getInitialState: function() {
-    return {
+class Show extends React.Component {
+  static defaultProps = {
+    showIndex: 0
+  };
+  constructor(props) {
+    super(props);
+    this.state = {
       showIndex: this.props.showIndex
     };
-  },
-  handleBtnClick: function() {
+  }
+  handleBtnClick() {
     var totalShows = this.props.shows.length;
 
     this.setState(function(prevState) {
@@ -48,18 +46,22 @@ var Show = createClass({
         showIndex: (prevState.showIndex + 1) % totalShows
       };
     });
-  },
-  render: function() {
+  }
+  render() {
     var show = this.props.shows[this.state.showIndex];
     return (
       <div className="text-center">
         <Title showTitle={show.title} />
         <Poster showPoster={show.poster} />
         <ShowInfo showPlot={show.plot} showRating={show.imdbRating} />
-        <button onClick={this.handleBtnClick}>Next Show</button>
+        <button onClick={this.handleBtnClick.bind(this)}>Next Show</button>
       </div>
     );
   }
-});
+}
+
+// Show.defaultProps = {
+//   showIndex: 0
+// };
 
 module.exports = Show;
